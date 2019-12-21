@@ -4,28 +4,24 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public Dictionary<string, string> Login_Dictionary;
 
     void Start()
     {
-        List<string> student_list = new List<string>();
-
-        student_list.Add("홍길동");
-        student_list.Remove("홍길동");
-        student_list.Add("박혁거세");
-        student_list.Add("선덕여왕");
-        student_list.Contains("박혁거세");
+        Login_Dictionary = new Dictionary<string, string>();
+        Login_Dictionary.Add("홍길동", "12341234");
+        Login_Dictionary.Add("이순신", "Abcd234");
+        Login_Dictionary.Add("유관순", "1234Power");
         
-
-        List<string> new_student = student_list.FindAll(student => (student.Length >= 4));
-
-        foreach ( string _stu in new_student)
+        foreach(KeyValuePair<string, string> keyValuePair in Login_Dictionary)
         {
-            Debug.Log(_stu);
-        }        
+            Debug.Log("ID: " + keyValuePair.Key + " PW: " + keyValuePair.Value);
+        }
 
-        //Debug.Log(student_list.FindAll(student => (student.Length >= 4)));
+        Debug.Log(Login_Dictionary.ContainsKey("이순신"));
+        Debug.Log(Login_Dictionary.ContainsKey("세종대왕"));
 
-        
+        Login_Dictionary.ContainsValue("12341234");
     }
 
 
